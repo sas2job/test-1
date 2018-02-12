@@ -703,13 +703,25 @@ img {
   padding-top: 27px;
   text-align: center;
   color: #ffffff;
-  background-image: url("../img/index-background-mobile@1x.jpg"), linear-gradient(to bottom, #68b738 0%, #68b738, 305px, transparent 305px, transparent 100%);
+  background-image: linear-gradient(to bottom, #68b738 0%, #68b738, 305px, transparent 305px, transparent 100%);
   background-position: center top;
   background-size: 100% auto;
   background-repeat: no-repeat; }
-  @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
-    .promo {
-      background-image: url("../img/index-background-mobile@2x.jpg"), linear-gradient(to bottom, #68b738 0%, #68b738, 305px, transparent 305px, transparent 100%); } }
+  .promo::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: -1;
+    width: 100%;
+    height: 305px;
+    background-image: url("../img/index-background-mobile@1x.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat; }
+    @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
+      .promo::after {
+        background-image: url("../img/index-background-mobile@2x.jpg"); } }
   @media (min-width: 768px) {
     .promo {
       min-height: 840px;
@@ -717,7 +729,9 @@ img {
       font-size: 20px;
       text-align: left;
       color: #111111;
-      background-image: none; } }
+      background-image: none; }
+      .promo::after {
+        display: none; } }
   @media (min-width: 1300px) {
     .promo {
       min-height: 560px;
